@@ -67,7 +67,7 @@
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0" Content="{Binding Name}"/>
                             <Label Grid.Column="1" Content="{Binding Description}"/>
-                            <Label  Grid.Column="2" Content="{Binding Priority}"/>
+                            <Label Grid.Column="2" Content="{Binding Priority}"/>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
