@@ -12,22 +12,16 @@
         <viewModels:TaskViewModel/>
     </Window.DataContext>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <Grid>
+        <Grid Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="1.5*"/>
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid>
+            <Grid Grid.Row="0">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -35,40 +29,49 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
-                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1.5*"/>
                 </Grid.ColumnDefinitions>
-                <Label Grid.Row="0" Grid.Column="0" Content="Name:"/>
+                <Label Grid.Row="0" Grid.Column="0" Content="Name"/>
                 <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1"/>
-                <Label Grid.Row="1" Grid.Column="0" Content="Description:"/>
-                <TextBox Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1"/>
-                <Label Grid.Row="2" Content="Priority:"/>
-                <TextBox Text="{Binding Priority, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1"/>
+                <Label Grid.Row="1" Grid.Column="0" Content="Description"/>
+                <TextBox Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" />
+                <Label Grid.Row="2" Grid.Column="0" Content="Priority"/>
+                <TextBox Text="{Binding Priority, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" />
             </Grid>
-            <WrapPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Horizontal">
-                <Button Command="{Binding AddTaskCommand}" Content="Add"/>
-                <Button Command="{Binding RemoveTaskCommand}" Content="Remove"/>
-                <Button Command="{Binding ClearInputsCommand}" Content="Clear"/>
-                <Button Command="{Binding ModifyTaskCommand}" Content="Modify"/>
-                <CheckBox IsChecked="{Binding ShouldClear}" Content="Clear on add"/>
-                <CheckBox IsChecked="{Binding ShouldSelectNext}" Content="Should select next on remove"/>
-            </WrapPanel>
-
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <WrapPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Stretch">
+                    <Button Command="{Binding AddTaskCommand}" Content="Add"/>
+                    <Button Command="{Binding RemoveTaskCommand}" Content="Remove"/>
+                    <Button Command="{Binding ClearInputsCommand}" Content="Clear"/>
+                    <Button Command="{Binding ModifyTaskCommand}" Content="Modify"/>
+                </WrapPanel>
+                <StackPanel Grid.Row="1" HorizontalAlignment="Center">
+                    <CheckBox IsChecked="{Binding ShouldClear}" Content="Clear on add"/>
+                    <CheckBox IsChecked="{Binding ShouldSelectNext}" Content="Should select next on remove"/>
+                </StackPanel>
+            </Grid>
         </Grid>
-        <ListView SelectedItem="{Binding SelectedTask}" ItemsSource="{Binding Tasks}" Grid.Column="1">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBox IsEnabled="false" Grid.Column="0" Text="{Binding Name}"/>
-                        <TextBox IsEnabled="false" Grid.Column="1" Text="{Binding Description}"/>
-                        <TextBox IsEnabled="false" Grid.Column="2" Text="{Binding Priority}"/>
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <Grid Grid.Column="1">
+            <ListView BorderThickness="0" SelectedItem="{Binding SelectedTask}" ItemsSource="{Binding Tasks}" Grid.Column="1">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Content="{Binding Name}"/>
+                            <Label Grid.Column="1" Content="{Binding Description}"/>
+                            <Label  Grid.Column="2" Content="{Binding Priority}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
     </Grid>
 </Window>
