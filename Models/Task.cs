@@ -6,6 +6,13 @@ namespace Tasks.Models
     public class Task : INotifyPropertyChanged
     {
 
+        public static readonly string[] Priorities =
+        {
+            "Low",
+            "Medium",
+            "High"
+        };
+
         private string _name;
 
         public string Name

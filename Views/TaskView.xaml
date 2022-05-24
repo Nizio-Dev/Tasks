@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tasks"
+        xmlns:m="clr-namespace:Tasks.Models"
         xmlns:viewModels="clr-namespace:Tasks.ViewModels"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
@@ -36,7 +37,8 @@
                 <Label Grid.Row="1" Grid.Column="0" Content="Description"/>
                 <TextBox Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" />
                 <Label Grid.Row="2" Grid.Column="0" Content="Priority"/>
-                <TextBox Text="{Binding Priority, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" />
+                <ComboBox SelectedItem="{Binding Priority}" Grid.Row="2" Grid.Column="1" 
+                          ItemsSource="{x:Static Member=m:Task.Priorities}"/>
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
