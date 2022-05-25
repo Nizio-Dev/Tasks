@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace Tasks.Models
@@ -49,6 +50,31 @@ namespace Tasks.Models
             }
         }
 
+        private DateTime _creationTime;
+
+        public DateTime CreationTime
+        {
+            get => _creationTime;
+            private set => _creationTime = value;
+        }
+
+        private DateTime? _finishTime;
+
+        public DateTime? FinishTime
+        {
+            get => _finishTime;
+            set 
+            { 
+                _finishTime = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        public Task()
+        {
+            CreationTime = DateTime.Now.Date;
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

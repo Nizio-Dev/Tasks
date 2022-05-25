@@ -5,12 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tasks"
         xmlns:m="clr-namespace:Tasks.Models"
-        xmlns:viewModels="clr-namespace:Tasks.ViewModels"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:vm="clr-namespace:Tasks.ViewModels"
         mc:Ignorable="d"
         Title="Tasks" Height="450" Width="800">
     <Window.DataContext>
-        <viewModels:TaskViewModel/>
+        <vm:TaskViewModel/>
     </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -27,6 +26,7 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -39,6 +39,8 @@
                 <Label Grid.Row="2" Grid.Column="0" Content="Priority"/>
                 <ComboBox SelectedItem="{Binding Priority}" Grid.Row="2" Grid.Column="1" 
                           ItemsSource="{x:Static Member=m:Task.Priorities}"/>
+                <Label Grid.Row="3" Grid.Column="0" Content="Finish time"/>
+                <DatePicker SelectedDate="{Binding FinishTime, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" />
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
@@ -66,10 +68,16 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" Content="{Binding Name}"/>
-                            <Label Grid.Column="1" Content="{Binding Description}"/>
-                            <Label Grid.Column="2" Content="{Binding Priority}"/>
+                            <Label Style="{StaticResource TaskLabel}" Grid.Column="0" Content="{Binding Name}"/>
+                            <Label Style="{StaticResource TaskLabel}" Grid.Column="1" Content="{Binding Description}"/>
+                            <Label Style="{StaticResource TaskLabel}" Grid.Column="2" Content="{Binding Priority}"/>
+                            <Label Style="{StaticResource TaskLabel}" Grid.Column="3" Content="{Binding CreationTime}"
+                                    ContentStringFormat="dd.MM.yyyy"/>
+                            <Label Style="{StaticResource TaskLabel}" Grid.Column="4" Content="{Binding FinishTime}"
+                                   ContentStringFormat="dd.MM.yyyy"/>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>

@@ -14,6 +14,8 @@ namespace Tasks.ViewModels
         private string _name;
         private string _description;
         private string _priority;
+        private DateTime? _finishTime;
+
         private bool _shouldClear;
         private bool _shouldSelectNext;
 
@@ -27,6 +29,7 @@ namespace Tasks.ViewModels
                 Name = value?.Name;
                 Description = value?.Description;
                 Priority = value?.Priority;
+                FinishTime = value?.FinishTime;
 
                 _selectedItem = value;
                 (RemoveTaskCommand as GeneralCommand)?.OnCanExecuteChanged();
@@ -113,6 +116,16 @@ namespace Tasks.ViewModels
             }
         }
 
+        public DateTime? FinishTime 
+        { 
+            get => _finishTime;
+            set
+            {
+                _finishTime = value;
+                OnPropertyChanged();
+            }
+        }
+
         public TaskViewModel()
         {
             SetInitialData();
@@ -130,15 +143,16 @@ namespace Tasks.ViewModels
                 {
                     Name = "Initial",
                     Description = "Initial",
-                    Priority = "Low"
+                    Priority = "Low",
+                    FinishTime = DateTime.Now.Date
                 }
             };
-
 
             SelectedTask = null;
             Name = string.Empty;
             Description = string.Empty;
             Priority = string.Empty;
+            FinishTime = DateTime.Now.Date;
         }
 
         
@@ -149,6 +163,7 @@ namespace Tasks.ViewModels
                 Name = Name,
                 Description = Description,
                 Priority = Priority,
+                FinishTime = FinishTime,
             };
 
             Tasks.Add(newTask);
@@ -164,6 +179,7 @@ namespace Tasks.ViewModels
             Name = string.Empty;
             Description = string.Empty;
             Priority = string.Empty;
+            FinishTime = DateTime.Now.Date;
             SelectedTask = null;
         }
 
@@ -172,6 +188,7 @@ namespace Tasks.ViewModels
             SelectedTask.Name = Name;
             SelectedTask.Description = Description;
             SelectedTask.Priority = Priority;
+            SelectedTask.FinishTime = FinishTime;
         }
 
         private void ExecuteRemoveTask(object obj)
