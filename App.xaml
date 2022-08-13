@@ -4,7 +4,8 @@
              xmlns:local="clr-namespace:Tasks"
              StartupUri="Views/TaskView.xaml">
     <Application.Resources>
-        <Style TargetType="Label" x:Key="TaskLabel">
+        <Style TargetType="ListViewItem" x:Key="TaskItem">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Priority}" Value="Low">
                     <Setter Property="Background" Value="#C6D57E"/>
@@ -28,21 +29,29 @@
             <Setter Property="Padding" Value="15 5"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="BorderBrush" Value="DarkOrange"/>
-            <Setter Property="Width" Value="100"/>
+            <Setter Property="MinWidth" Value="100"/>
+        </Style>
+        <Style BasedOn="{StaticResource {x:Type Button}}" TargetType="Button" x:Key="AddOrCopyButton">
+            <Setter Property="Content" Value="Copy"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding SelectedTask}" Value="{x:Null}">
+                    <Setter Property="Content" Value="Add"/>
+                </DataTrigger>
+            </Style.Triggers>
         </Style>
         <Style TargetType="TextBox">
-            <Setter Property="Width" Value="140"/>
-            <Setter Property="Height" Value="30"/>
+            <Setter Property="MinWidth" Value="140"/>
+            <Setter Property="MaxHeight" Value="30"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
         </Style>
         <Style TargetType="ComboBox">
-            <Setter Property="Width" Value="140"/>
-            <Setter Property="Height" Value="30"/>
+            <Setter Property="MinWidth" Value="140"/>
+            <Setter Property="MaxHeight" Value="30"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
         </Style>
         <Style TargetType="DatePicker">
-            <Setter Property="Width" Value="140"/>
-            <Setter Property="Height" Value="30"/>
+            <Setter Property="MinWidth" Value="140"/>
+            <Setter Property="MaxHeight" Value="30"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
         </Style>
         <Style TargetType="Label">
@@ -50,8 +59,8 @@
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="Padding" Value="5"/>
         </Style>
-        <Style TargetType="ListViewItem">
-            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Style TargetType="CheckBox">
+            <Setter Property="Margin" Value="10 5"/>
         </Style>
     </Application.Resources>
 </Application>

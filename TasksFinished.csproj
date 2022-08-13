@@ -69,6 +69,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Behavior\DeselectBehavior.cs" />
     <Compile Include="Models\Task.cs" />
     <Compile Include="ViewModels\GeneralCommand.cs" />
     <Compile Include="ViewModels\TaskViewModel.cs" />

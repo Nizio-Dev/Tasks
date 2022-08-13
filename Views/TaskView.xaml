@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:b="clr-namespace:Tasks.Behavior"
         xmlns:local="clr-namespace:Tasks"
         xmlns:m="clr-namespace:Tasks.Models"
         xmlns:vm="clr-namespace:Tasks.ViewModels"
@@ -42,27 +43,31 @@
                 <Label Grid.Row="3" Grid.Column="0" Content="Finish time"/>
                 <DatePicker SelectedDate="{Binding FinishTime, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" />
             </Grid>
-            <Grid Grid.Row="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+            <StackPanel Grid.Row="1">
                 <WrapPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Stretch">
-                    <Button Command="{Binding AddTaskCommand}" Content="Add"/>
+                    <Button Style="{StaticResource AddOrCopyButton}" Command="{Binding AddTaskCommand}"/>
                     <Button Command="{Binding RemoveTaskCommand}" Content="Remove"/>
                     <Button Command="{Binding ClearInputsCommand}" Content="Clear"/>
                     <Button Command="{Binding ModifyTaskCommand}" Content="Modify"/>
                 </WrapPanel>
-                <StackPanel Grid.Row="1" HorizontalAlignment="Center">
+                <WrapPanel Grid.Row="1" HorizontalAlignment="Center">
                     <CheckBox IsChecked="{Binding ShouldClear}" Content="Clear on add"/>
                     <CheckBox IsChecked="{Binding ShouldSelectNext}" Content="Should select next on remove"/>
-                </StackPanel>
-            </Grid>
+                </WrapPanel>
+            </StackPanel>
         </Grid>
         <Grid Grid.Column="1">
-            <ListView BorderThickness="0" SelectedItem="{Binding SelectedTask}" ItemsSource="{Binding Tasks}" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <ListView x:Name="TaskList" BorderThickness="0" SelectedItem="{Binding SelectedTask}" ItemsSource="{Binding Tasks}" Grid.RowSpan="2"
+                      b:DeselectBehavior.IsActive="True">
+                <ListView.Resources>
+                    <Style TargetType="ListViewItem" BasedOn="{StaticResource TaskItem}"/>
+                </ListView.Resources>
                 <ListView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate DataType="{x:Type m:Task}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -71,17 +76,20 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Style="{StaticResource TaskLabel}" Grid.Column="0" Content="{Binding Name}"/>
-                            <Label Style="{StaticResource TaskLabel}" Grid.Column="1" Content="{Binding Description}"/>
-                            <Label Style="{StaticResource TaskLabel}" Grid.Column="2" Content="{Binding Priority}"/>
-                            <Label Style="{StaticResource TaskLabel}" Grid.Column="3" Content="{Binding CreationTime}"
+                            <Label Grid.Column="0" Content="{Binding Name}"/>
+                            <Label Grid.Column="1" Content="{Binding Description}"/>
+                            <Label Grid.Column="2" Content="{Binding Priority}"/>
+                            <Label Grid.Column="3" Content="{Binding CreationTime}"
                                     ContentStringFormat="dd.MM.yyyy"/>
-                            <Label Style="{StaticResource TaskLabel}" Grid.Column="4" Content="{Binding FinishTime}"
+                            <Label Grid.Column="4" Content="{Binding FinishTime}"
                                    ContentStringFormat="dd.MM.yyyy"/>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <ListBox>
+                <ListBoxItem/>
+            </ListBox>
         </Grid>
     </Grid>
 </Window>

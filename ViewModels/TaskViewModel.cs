@@ -253,7 +253,6 @@ namespace Tasks.ViewModels
             }
 
             return Tasks[currentSelectedIndex + 1];
-
         }
     }
 }

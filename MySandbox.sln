@@ -3,11 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasks", "Tasks.csproj", "{346A035F-E80A-4A3B-A6A1-FF08D6BD4587}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TasksFinished", "TasksFinished.csproj", "{346A035F-E80A-4A3B-A6A1-FF08D6BD4587}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe", "..\TicTacToe\TicTacToe.csproj", "{7FD1C454-05AF-41B6-B21C-BC029AC3D905}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schoolio", "..\Schoolio\Schoolio.csproj", "{A2650162-F54C-478F-B3BD-E49A9E84C9BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dashboard", "..\Dashboard\Dashboard.csproj", "{F07971EB-B58C-4667-A367-E574805AF626}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clock", "..\Clock\Clock.csproj", "{C16A2A2A-2C54-401B-8688-6CEE03940777}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Misc", "..\Misc\Misc.csproj", "{6A654D6D-53A9-489B-9F17-F50079824DFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +33,18 @@ Global
 		{A2650162-F54C-478F-B3BD-E49A9E84C9BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2650162-F54C-478F-B3BD-E49A9E84C9BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2650162-F54C-478F-B3BD-E49A9E84C9BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F07971EB-B58C-4667-A367-E574805AF626}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F07971EB-B58C-4667-A367-E574805AF626}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F07971EB-B58C-4667-A367-E574805AF626}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F07971EB-B58C-4667-A367-E574805AF626}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C16A2A2A-2C54-401B-8688-6CEE03940777}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C16A2A2A-2C54-401B-8688-6CEE03940777}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C16A2A2A-2C54-401B-8688-6CEE03940777}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C16A2A2A-2C54-401B-8688-6CEE03940777}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A654D6D-53A9-489B-9F17-F50079824DFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A654D6D-53A9-489B-9F17-F50079824DFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A654D6D-53A9-489B-9F17-F50079824DFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A654D6D-53A9-489B-9F17-F50079824DFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
